@@ -30,3 +30,5 @@ add_definitions(-DKJ_STD_COMPAT)
 
 add_subdirectory(qhttp)
 add_subdirectory(qdht)
+add_subdirectory(qreplnode)
+add_subdirectory(qreplmon)

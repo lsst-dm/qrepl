@@ -2,3 +2,11 @@
 
 using Cxx = import "/capnp/c++.capnp";
 $Cxx.namespace("lsst::qserv::qdht");
+
+struct NodeStatus {
+	id @0 : Data;
+	dhtPort @1 : UInt16;
+	ctrlPort @2 : UInt16;
+	keys @3 : List(Data);
+	pid @4 : UInt32;
+}

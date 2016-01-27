@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>DHT Monitor</title>
+        <link rel="stylesheet" href="css/normalize.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon"/>
+    </head>
+    <body>
+        <svg></svg>
+        <div id="controls">
+            <div id="nodes-controls">
+                <span id="nodes-label">Nodes:</span>
+                <span>
+                    <button type="button" id="add5nodes">+5</button>
+                    <button type="button" id="add1node">+1</button>
+                    <button type="button" id="rem1node">-1</button>
+                    <button type="button" id="rem5nodes">-5</button>
+                </span>
+            </div>
+            <div id="keys-controls">
+                <span id="keys-label">Keys:</span>
+                <span>
+                    <button type="button" id="add5keys">+5</button>
+                    <button type="button" id="add1key">+1</button>
+                    <button type="button" id="rem1key">-1</button>
+                    <button type="button" id="rem5keys">-5</button>
+                </span>
+            </div>
+        </div>
+        <script src="js/d3.min.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>
