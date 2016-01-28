@@ -22,8 +22,8 @@ include_directories(
 link_directories(
     "$ENV{BOOST_DIR}/lib"
     "$ENV{CAPNPROTO_DIR}/lib"
-	"$ENV{LOG_DIR}/lib"
-	"$ENV{LOG4CXX_DIR}/lib"
+    "$ENV{LOG_DIR}/lib"
+    "$ENV{LOG4CXX_DIR}/lib"
 )
 
 add_definitions(-DKJ_STD_COMPAT)
