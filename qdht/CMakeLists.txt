@@ -6,6 +6,8 @@ add_custom_command(
 
 add_library(qdht
     Id.cc
+    Leafset.cc
+    Node.cc
     qdht.capnp.c++
 )
 
