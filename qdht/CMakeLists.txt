@@ -5,6 +5,7 @@ add_custom_command(
 )
 
 add_library(qdht
+    Id.cc
     qdht.capnp.c++
 )
 
