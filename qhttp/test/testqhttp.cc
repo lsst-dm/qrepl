@@ -313,7 +313,7 @@ struct QhttpFixture
 
 BOOST_FIXTURE_TEST_CASE(static_content, QhttpFixture)
 {
-    server->addStaticContent("/*", "qhttp/testdata");
+    server->addStaticContent("/*", "qhttp/test/testdata");
     start();
 
     CurlEasy curl;
@@ -321,20 +321,20 @@ BOOST_FIXTURE_TEST_CASE(static_content, QhttpFixture)
     //----- test default index.htm
 
     curl.setup("GET", urlPrefix, "").perform().validate(200, "text/html");
-    compareWithFile(curl.recdContent, "qhttp/testdata/index.htm");
+    compareWithFile(curl.recdContent, "qhttp/test/testdata/index.htm");
 
     //----- test subdirectories and file typing by extension
 
     curl.setup("GET", urlPrefix + "css/style.css", "").perform().validate(200, "text/css");
-    compareWithFile(curl.recdContent, "qhttp/testdata/css/style.css");
+    compareWithFile(curl.recdContent, "qhttp/test/testdata/css/style.css");
     curl.setup("GET", urlPrefix + "images/lsst.gif", "").perform().validate(200, "image/gif");
-    compareWithFile(curl.recdContent, "qhttp/testdata/images/lsst.gif");
+    compareWithFile(curl.recdContent, "qhttp/test/testdata/images/lsst.gif");
     curl.setup("GET", urlPrefix + "images/lsst.jpg", "").perform().validate(200, "image/jpeg");
-    compareWithFile(curl.recdContent, "qhttp/testdata/images/lsst.jpg");
+    compareWithFile(curl.recdContent, "qhttp/test/testdata/images/lsst.jpg");
     curl.setup("GET", urlPrefix + "images/lsst.png", "").perform().validate(200, "image/png");
-    compareWithFile(curl.recdContent, "qhttp/testdata/images/lsst.png");
+    compareWithFile(curl.recdContent, "qhttp/test/testdata/images/lsst.png");
     curl.setup("GET", urlPrefix + "js/main.js", "").perform().validate(200, "application/javascript");
-    compareWithFile(curl.recdContent, "qhttp/testdata/js/main.js");
+    compareWithFile(curl.recdContent, "qhttp/test/testdata/js/main.js");
 
     //----- test redirect for directory w/o trailing "/"
 
@@ -353,7 +353,7 @@ BOOST_FIXTURE_TEST_CASE(static_content, QhttpFixture)
 
 BOOST_FIXTURE_TEST_CASE(relative_url_containment, QhttpFixture)
 {
-    server->addStaticContent("/*", "qhttp/testdata");
+    server->addStaticContent("/*", "qhttp/test/testdata");
 
     start();
     std::string content;
@@ -361,11 +361,11 @@ BOOST_FIXTURE_TEST_CASE(relative_url_containment, QhttpFixture)
     //----- test path normalization
 
     content = asioHttpGet("/css/../css/style.css",200, "text/css");
-    compareWithFile(content, "qhttp/testdata/css/style.css");
+    compareWithFile(content, "qhttp/test/testdata/css/style.css");
     content = asioHttpGet("/css/./style.css", 200, "text/css");
-    compareWithFile(content, "qhttp/testdata/css/style.css");
+    compareWithFile(content, "qhttp/test/testdata/css/style.css");
     content = asioHttpGet("/././css/.././css/./../css/style.css", 200, "text/css");
-    compareWithFile(content, "qhttp/testdata/css/style.css");
+    compareWithFile(content, "qhttp/test/testdata/css/style.css");
 
     //----- test relative path containment
 

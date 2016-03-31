@@ -1,5 +1,6 @@
-#define BOOST_TEST_MODULE qdht
-#include "boost/test/included/unit_test.hpp"
+#include <string>
+
+#include "boost/test/unit_test.hpp"
 
 #include "qdht/Id.hpp"
 
@@ -7,7 +8,8 @@ using namespace std;
 
 namespace lsst {
 namespace qserv {
-namespace qdht {
+
+BOOST_AUTO_TEST_SUITE(Id)
 
 
 BOOST_AUTO_TEST_CASE(id_default_ctor)
@@ -240,4 +242,6 @@ BOOST_AUTO_TEST_CASE(id_serdes)
 }
 
 
-}}} // namespace lsst::qserv::qdht
+BOOST_AUTO_TEST_SUITE_END()
+
+}} // namespace lsst::qserv
