@@ -9,15 +9,4 @@ add_library(qdht
     qdht.capnp.c++
 )
 
-add_executable(testqdht
-    testqdht.cc
-)
-
-target_link_libraries(testqdht
-    qdht
-)
-
-add_test(
-    NAME testqdht
-    COMMAND testqdht
-)
+add_subdirectory(test)

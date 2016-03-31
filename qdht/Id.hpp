@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <iosfwd>
 #include <iterator>
+#include <stddef.h>
 #include <tuple>
 
 namespace lsst {
@@ -45,6 +46,8 @@ public:
 
     template<typename UInt8InputIter>
     void deserialize(UInt8InputIter it);
+
+    size_t size() const { return sizeof(msb) + sizeof(xsb) + sizeof(lsb); }
 
     //----- Distance operators between Ids.  diffs() returns a tuple of distances from this to rhs in the ccw
     //      and cw directions around the ring, respectively.  relpos() returns the direction of the shortest
