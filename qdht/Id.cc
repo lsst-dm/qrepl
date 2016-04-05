@@ -43,7 +43,7 @@ bool Id::parse(string const& str)
 
 Id::operator string() const
 {
-    stringstream str;
+    ostringstream str;
     str << *this;
     return str.str();
 }

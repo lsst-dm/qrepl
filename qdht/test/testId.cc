@@ -1,7 +1,10 @@
+// System headers
 #include <string>
 
+// Third-party headers
 #include "boost/test/unit_test.hpp"
 
+// Local headers
 #include "qdht/Id.hpp"
 
 using namespace std;
