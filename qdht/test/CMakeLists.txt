@@ -7,6 +7,7 @@ add_custom_command(
 add_executable(testqdht
     main.cc
     testId.cc
+    testLeafset.cc
     testNode.cc
     testqdht.capnp.c++
 )

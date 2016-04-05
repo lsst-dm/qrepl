@@ -10,6 +10,11 @@
 
 // Local headers
 #include "qdht/RoutePoint.hpp"
+#include "qdht/qdht.capnp.h"
+
+// Third-party headers
+#include "boost/asio.hpp"
+#include "boost/system/error_code.hpp"
 
 namespace errc = boost::system::errc;
 namespace asio = boost::asio;
@@ -74,13 +79,27 @@ boost::system::error_code Node::send(qdht::proto::Message::Reader msg)
 {
     boost::system::error_code ec;
 
-    // TODO: message routing logic goes here.  Just deliver all messages locally for now.
-    for(auto& client : _clients) {
-        if (client.clientId == msg.getClientId()) {
-            if (client.onDeliver) {
+    RouteDisposition disposition;
+    RoutePoint nextHop;
+
+    disposition = _leafset.route(msg, nextHop);
+
+    switch(disposition) {
+
+    case RouteDisposition::DELIVER_LOCAL:
+        for(auto& client : _clients) {
+            if ((client.clientId == msg.getClientId()) && client.onDeliver) {
                 client.onDeliver(msg);
             }
         }
+        break;
+
+    case RouteDisposition::FORWARD:
+        break;
+
+    case RouteDisposition::NO_ROUTE_FOUND:
+        break;
+
     }
 
     return ec;

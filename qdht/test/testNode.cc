@@ -44,7 +44,7 @@ struct QdhtFixture
 
     void startAsio()
     {
-        serviceThread = std::move(std::thread([this](){ service.run(); }));
+        serviceThread = std::thread([this](){ service.run(); });
     }
 
     ~QdhtFixture()

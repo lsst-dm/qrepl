@@ -240,7 +240,7 @@ struct QhttpFixture
     void start()
     {
         server->accept();
-        serviceThread = std::move(std::thread([this](){ service.run(); }));
+        serviceThread = std::thread([this](){ service.run(); });
     }
 
     ~QhttpFixture()

@@ -13,6 +13,7 @@
 // Local headers
 #include "qdht/Client.hpp"
 #include "qdht/Id.hpp"
+#include "qdht/Leafset.hpp"
 #include "qdht/qdht.capnp.h"
 #include "qdht/RoutePoint.hpp"
 
@@ -66,6 +67,7 @@ private:
 
     RoutePoint _local;
     std::vector<Client> _clients;
+    Leafset _leafset;
 
 };
 

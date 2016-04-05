@@ -11,11 +11,20 @@ namespace lsst {
 namespace qserv {
 namespace qdht {
 
+
+enum class RouteDisposition {
+    NO_ROUTE_FOUND,
+    DELIVER_LOCAL,
+    FORWARD
+};
+
+
 struct RoutePoint
 {
     Id id;
     boost::asio::ip::tcp::endpoint endpoint;
 };
+
 
 }}} // namespace lsst::qserv::qdht
 
